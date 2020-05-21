@@ -6,6 +6,7 @@ import { Credentials } from './type/credentials';
 import { CurrentUser } from 'src/shared/user.decorator';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from './gql-auth.guard';
+import { UserType } from '../users/type/user.type';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -21,10 +22,9 @@ export class AuthResolver {
     return this.authService.signup(signupInput);
   }
 
-  @Query(() => Credentials)
+  @Query(() => UserType)
   @UseGuards(GqlAuthGuard)
-  hi(@CurrentUser() user) {
-    console.log(user);
-    return { accessToken: 'hi' };
+  me(@CurrentUser() user) {
+    return user;
   }
 }

@@ -13,10 +13,15 @@ type Credentials {
   accessToken: String!
 }
 
+type UserType {
+  id: ID!
+  username: String!
+}
+
 type Query {
   items: [ItemType!]!
   hello: String!
-  hi: Credentials!
+  me: UserType!
 }
 
 type Mutation {
