@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ItemType {
+  id: ID!
+  title: String!
+  price: Int!
+  description: String!
+}
+
+type Credentials {
+  accessToken: String!
+}
+
+type Query {
+  items: [ItemType!]!
+  hello: String!
+  hi: Credentials!
+}
+
+type Mutation {
+  createItem(input: ItemInput!): ItemType!
+  updateItem(input: ItemInput!, id: String!): ItemType!
+  deleteItem(id: String!): ItemType!
+  signin(signinInput: SigninInput!): Credentials!
+  signup(signupInput: SignupInput!): Credentials!
+}
+
+input ItemInput {
+  title: String!
+  price: Int!
+  description: String!
+}
+
+input SigninInput {
+  username: String!
+  password: String!
+}
+
+input SignupInput {
+  username: String!
+  password: String!
+}
