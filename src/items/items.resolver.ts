@@ -2,16 +2,20 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ItemsService } from './items.service';
 import { ItemType } from './type/item.type';
 import { ItemInput } from './input/item.input';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from '../auth/gql-auth.guard';
 
-@Resolver()
+@Resolver(ItemType)
 export class ItemsResolver {
   constructor(private readonly itemsService: ItemsService) {}
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => [ItemType])
   async items(): Promise<ItemType[]> {
     return this.itemsService.findAll();
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => ItemType)
   async createItem(@Args('input') input: ItemInput): Promise<ItemInput> {
     return this.itemsService.create(input);
