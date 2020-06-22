@@ -28,6 +28,7 @@
     "@nestjs/mongoose": "^7.0.1",
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "apollo-cache-control": "^0.11.0",
     "apollo-server-express": "^2.13.1",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.2.3",
