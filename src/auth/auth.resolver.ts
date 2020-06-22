@@ -7,6 +7,8 @@ import { CurrentUser } from 'src/shared/user.decorator';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from './gql-auth.guard';
 import { UserType } from '../users/type/user.type';
+import { RolesGuard } from '../shared/roles.guard';
+import { Roles } from 'src/shared/roles.decorator';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -23,7 +25,8 @@ export class AuthResolver {
   }
 
   @Query(() => UserType)
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles('admin', 'client')
   me(@CurrentUser() user) {
     return user;
   }
