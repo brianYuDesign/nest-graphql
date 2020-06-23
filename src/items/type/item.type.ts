@@ -1,9 +1,11 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { ObjectType, Field, Int, ID, Directive } from '@nestjs/graphql';
 
 @ObjectType()
+@Directive('@auth(roles:["admin", "client"])')
 export class ItemType {
   @Field(() => ID)
   readonly id?: string;
+  @Directive('@auth(roles:["admin"])')
   @Field()
   readonly title: string;
   @Field(() => Int)

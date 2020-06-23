@@ -6,4 +6,6 @@ export class SignupInput {
   username: string;
   @Field()
   password: string;
+  @Field()
+  role: string;
 }

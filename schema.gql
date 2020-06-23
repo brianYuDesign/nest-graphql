@@ -16,6 +16,7 @@ type Credentials {
 type UserType {
   id: ID!
   username: String!
+  role: String!
 }
 
 type Query {
@@ -46,4 +47,5 @@ input SigninInput {
 input SignupInput {
   username: String!
   password: String!
+  role: String!
 }
